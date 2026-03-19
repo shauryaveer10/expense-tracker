@@ -91,9 +91,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         List<Expense> expenseList = new ArrayList<>();
         expenseList = expenseRepository.findByDateBetween(start, end);
         BigDecimal totalExpense =BigDecimal.ZERO;
-        for(Expense temp : expenseList){
-            totalExpense.add(temp.getAmount());
-        }
+        for(Expense temp : expenseList) totalExpense = totalExpense.add(temp.getAmount());
         return totalExpense;
     }
 }
