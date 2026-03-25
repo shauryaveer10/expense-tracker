@@ -4,6 +4,8 @@ public enum ExpenseCategory{
         FOOD,
         TRAVEL,
         SHOPPING,
+        BILLS,
+        ENTERTAINMENT,
         OTHER
     }
 

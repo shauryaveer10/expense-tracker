@@ -2,6 +2,7 @@ package com.example.expenseTracker.service;
 
 
 import com.example.expenseTracker.dto.CreateExpenseRequestDTO;
+import com.example.expenseTracker.dto.ExpenseInsightsDTO;
 import com.example.expenseTracker.dto.ExpenseResponseDTO;
 
 import java.math.BigDecimal;
@@ -14,4 +15,5 @@ public interface ExpenseService {
     void deleteExpense(Long id);
     List<ExpenseResponseDTO> getExpenseBetweenDates(LocalDate start , LocalDate end);
     BigDecimal getTotalExpenseBetweenDates(LocalDate start ,LocalDate end);
+    ExpenseInsightsDTO getMonthlyInsights(int month , int year);
 }

@@ -1,6 +1,7 @@
 package com.example.expenseTracker.controller;
 
 import com.example.expenseTracker.dto.CreateExpenseRequestDTO;
+import com.example.expenseTracker.dto.ExpenseInsightsDTO;
 import com.example.expenseTracker.dto.ExpenseResponseDTO;
 import com.example.expenseTracker.service.ExpenseService;
 import jakarta.validation.Valid;
@@ -44,6 +45,13 @@ public class ExpenseController {
             @RequestParam LocalDate end
     ) {
         return expenseService.getTotalExpenseBetweenDates(start, end);
+    }
+    @GetMapping("/insights")
+    public ExpenseInsightsDTO getInsights(
+            @RequestParam int month,
+            @RequestParam int year
+    ) {
+        return expenseService.getMonthlyInsights(month, year);
     }
 
 

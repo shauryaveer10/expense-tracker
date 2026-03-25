@@ -24,17 +24,7 @@ public class GeminiClient {
         this.webClient = webClientBuilder.build();
     }
 
-    public String categorizeExpense(String description) {
-
-        String prompt = """
-                You are a financial assistant.
-                Categorize the following expense into one of:
-                [Food, Travel, Shopping, Bills, Entertainment, Other]
-
-                Expense: "%s"
-
-                Only return the category name.
-                """.formatted(description);
+    public String generateText(String prompt) {
 
         Map<String, Object> requestBody = Map.of(
                 "contents", List.of(
@@ -53,10 +43,9 @@ public class GeminiClient {
                 .bodyToMono(String.class)
                 .block();
 
-        return extractCategory(response);
+        return extractText(response); // 🔥 new method
     }
-
-    private String extractCategory(String response) {
+    private String extractText(String response) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(response);
@@ -73,7 +62,23 @@ public class GeminiClient {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "Other";
+            return "No summary available";
         }
     }
+
+    public String categorizeExpense(String description) {
+
+        String prompt = """
+            You are a financial assistant.
+            Categorize the following expense into one of:
+            [Food, Travel, Shopping, Bills, Entertainment, Other]
+
+            Expense: "%s"
+
+            Only return the category name.
+            """.formatted(description);
+
+        return generateText(prompt); // 🔥 reuse
+    }
+
 }

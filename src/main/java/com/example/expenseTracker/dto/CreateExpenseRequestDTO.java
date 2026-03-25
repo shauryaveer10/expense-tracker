@@ -20,9 +20,6 @@ public class CreateExpenseRequestDTO {
     private BigDecimal amount;
 
     @NotNull
-    private ExpenseCategory category;
-
-    @NotNull
     private LocalDate date;
     private String note;
 }
