@@ -1,66 +1,111 @@
-# 💰 Expense Tracker
+# 💸 AI-Powered Expense Tracker
 
-A backend-focused **Expense Tracker application** built using **Spring Boot**, designed to manage, track, and analyze daily expenses efficiently.
-
-This project demonstrates clean backend architecture, REST API design, and database integration using Java and Spring Boot.
+An intelligent expense tracking backend built with **Spring Boot** that leverages **Google Gemini AI** to automatically categorize expenses and generate smart financial insights.
 
 ---
 
 ## 🚀 Features
 
-- ➕ Add new expenses  
-- 📅 Filter expenses between date ranges  
-- 💰 Calculate total expenses within a time range  
-- 🧾 Store and manage expense records in a database  
-- 🔍 Clean and scalable REST API design  
+* ✅ Add, delete, and fetch expenses
+* 🤖 **AI-based expense categorization** (Food, Travel, Shopping, etc.)
+* 🧠 **AI-generated financial insights & summaries**
+* 📊 Category-wise expense breakdown
+* 📈 Percentage-based spending distribution
+* 📅 Date range filtering
+* 💰 Total expense calculation
+
+---
+
+## 🧠 AI Capabilities
+
+* Automatically categorizes expenses using **Google Gemini API**
+* Generates smart insights like:
+
+  * High spending detection
+  * Category dominance
+  * Suggestions for saving money
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Backend:** Spring Boot  
-- **Language:** Java  
-- **Database:** MySQL  
-- **ORM:** JPA / Hibernate  
-- **Build Tool:** Maven  
-- **API Testing:** Postman  
+* **Backend:** Spring Boot, Java
+* **Database:** (Add yours: MySQL / PostgreSQL / H2)
+* **AI Integration:** Google Gemini API
+* **Build Tool:** Maven
+* **Validation:** Jakarta Validation
 
 ---
 
 ## 📂 Project Structure
+
 ```
 expense-tracker/
-│── src/
-│ ├── controller/ # REST Controllers (API layer)
-│ ├── service/ # Business Logic
-│ ├── repository/ # Database Access Layer
-│ ├── model/ # Entity Classes
-│
-│── pom.xml
-│── README.md
+│── controller/     # REST APIs
+│── service/        # Business logic
+│── ai/             # Gemini integration
+│── repository/     # Database layer
+│── entity/         # Models
+│── dto/            # Request/Response DTOs
 ```
 
 ---
 
-## ⚙️ Setup & Installation
+## 📌 Sample API
 
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/shauryaveer10/expense-tracker.git
-cd expense-tracker
+### Create Expense
+
+POST `/expenses`
+
+```json
+{
+  "title": "Swiggy order",
+  "amount": 500,
+  "category": "FOOD",
+  "date": "2026-03-25",
+  "note": "Dinner"
+}
 ```
 
-### 2️⃣ Configure Database
-Update your application.properties file:
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/expense_db
-spring.datasource.username=root
-spring.datasource.password=your_password
+---
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+## 📊 Sample Response (Analytics)
+
+```json
+{
+  "totalExpense": 121320.00,
+  "topCategory": "FOOD",
+  "categoryBreakdown": {
+    "FOOD": 120120.00,
+    "OTHER": 1200.00
+  },
+  "summary": "You are spending heavily on food. Consider reducing online orders to save more."
+}
 ```
-### 2️⃣ Run the application
-```
-mvn spring-boot:run
-```
+
+---
+
+## ⚡ Future Enhancements
+
+* 📈 Monthly trend analysis
+* ⚠️ Anomaly detection in spending
+* 📊 Frontend dashboard (React)
+* 🔔 Smart alerts & recommendations
+
+---
+
+## 💡 Key Highlights
+
+* Built a **real-world AI-integrated backend system**
+* Designed **clean architecture** (Controller → Service → AI Client)
+* Implemented **fault-tolerant AI fallback mechanisms**
+
+---
+
+## 📬 Author
+
+**Shaurya Veer Singh Patial**
+
+---
+
+⭐ If you found this useful, consider giving it a star!
