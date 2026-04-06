@@ -20,13 +20,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     private final ExpenseRepository expenseRepository;
     private final AIService aiService;
 
-    // ✅ Constructor Injection (best practice)
     public ExpenseServiceImpl(ExpenseRepository expenseRepository, AIService aiService) {
         this.expenseRepository = expenseRepository;
         this.aiService = aiService;
     }
 
-    // ✅ Safe category mapping (NO crashes)
+
     private static final Map<String, ExpenseCategory> CATEGORY_MAP = Map.of(
             "FOOD", ExpenseCategory.FOOD,
             "TRAVEL", ExpenseCategory.TRAVEL,
